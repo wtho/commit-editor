@@ -1,0 +1,9 @@
+{
+  "name": "stub-path",
+  "version": "0.0.1",
+  "description": "",
+  "main": "path.js",
+  "type" :"module",
+  "dependencies": {
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "stub-through2",
+  "version": "0.0.1",
+  "description": "",
+  "main": "through2.js",
+  "type" :"module",
+  "dependencies": {
+  }
+}
