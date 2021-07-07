@@ -11,14 +11,21 @@
     "type": "git",
     "url": "https://github.com/wtho/commit-editor"
   },
-  "homepage": "https://github.com/wtho/commit-editor",
-  "keywords": ["commit-editor", "conventional-commits", "commitlint", "semantic commit messages", "semantic commits", "semantic-release"],
+  "homepage": "https://commit-editor.netlify.app",
+  "keywords": [
+    "commit-editor",
+    "conventional-commits",
+    "commitlint",
+    "semantic commit messages",
+    "semantic commits",
+    "semantic-release"
+  ],
   "license": "MIT",
   "scripts": {
-    "test": "echo 'No tests implemented yet'",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "@commitlint/config-angular": "^12.1.4",
@@ -38,10 +45,13 @@
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.24",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3",
     "typescript": "^4.3.2",
-    "vite": "^2.3.8",
-    "vue-tsc": "^0.0.24"
+    "vite": "^2.4.1",
+    "vue-tsc": "^0.2.0"
   }
 }

@@ -74,7 +74,7 @@
         This link brings you to the <b>GitHub Repository</b> of this project
       </template>
     </monaco-style-tooltip>
-    <monaco-style-tooltip position="top" width="12rem" align="inline-end">
+    <!-- <monaco-style-tooltip position="top" width="12rem" align="inline-end">
       <a
         href="https://www.buymeacoffee.com/wtho"
         target="_blank"
@@ -89,7 +89,7 @@
       <template v-slot:tooltip-content>
         Support me if you like this app and feel like it!
       </template>
-    </monaco-style-tooltip>
+    </monaco-style-tooltip> -->
   </div>
 </template>
 
