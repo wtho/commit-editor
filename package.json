@@ -1,0 +1,47 @@
+{
+  "name": "commit-editor",
+  "description": "Interactive commitlint support to boost your conventional commits and semantic release productivity",
+  "version": "0.0.1",
+  "author": {
+    "email": "thomas@wtho.de",
+    "name": "Thomas Wirth",
+    "url": "https://github.com/wtho"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wtho/commit-editor"
+  },
+  "homepage": "https://github.com/wtho/commit-editor",
+  "keywords": ["commit-editor", "conventional-commits", "commitlint", "semantic commit messages", "semantic commits", "semantic-release"],
+  "license": "MIT",
+  "scripts": {
+    "test": "echo 'No tests implemented yet'",
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@commitlint/config-angular": "^12.1.4",
+    "@commitlint/config-angular-type-enum": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/is-ignored": "^12.1.4",
+    "@commitlint/lint": "^12.1.4",
+    "@commitlint/rules": "^12.1.4",
+    "conventional-changelog-conventionalcommits": "^4.6.0",
+    "js-convert-case": "^4.1.2",
+    "jsonc-parser": "^3.0.0",
+    "monaco-editor": "^0.25.2",
+    "stub-fs": "file:src/stubs/fs",
+    "stub-path": "file:src/stubs/path",
+    "stub-through2": "file:src/stubs/through2",
+    "stub-util": "file:src/stubs/util",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "typescript": "^4.3.2",
+    "vite": "^2.3.8",
+    "vue-tsc": "^0.0.24"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "stub-util",
+  "version": "0.0.1",
+  "description": "",
+  "main": "util.js",
+  "type" :"module",
+  "dependencies": {
+  }
+}
