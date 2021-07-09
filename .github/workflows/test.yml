@@ -22,8 +22,12 @@ jobs:
           cd commit-editor-app
           npm test -- --collectCoverage
 
+      - name: prepare coverage report
+        run: |
+          mkdir coverage
+          cat commit-editor-app/coverage/lcov.info | sed 's/^SF:/SF:commit-editor-app\//g' > coverage/lcov.info
+
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./commit-editor-app/coverage/lcov.info
