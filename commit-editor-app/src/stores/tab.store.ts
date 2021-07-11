@@ -27,6 +27,7 @@ export const createTabStore = (initialSettings: { config: Config, initialMessage
     parseErrorMessages,
     configMarkerMessages,
     configErrors,
+    commitMessage: initialSettings.initialMessage,
   })
 
   const setMessageEditorMarkers = (markers: monaco.editor.IMarkerData[]) => state.messageEditorMarkers = markers
@@ -40,6 +41,7 @@ export const createTabStore = (initialSettings: { config: Config, initialMessage
     state.configMarkerMessages = [...configMarkerMessages]
     state.configErrors = [...state.parseErrorMessages, ...configMarkerMessages]
   }
+  const setCommitMessage = (commitMessage: string) => state.commitMessage = commitMessage
 
   // notifiers
   const messageEditorNextMarkerActionSubject = new NotificationSubject<void>()
@@ -53,6 +55,7 @@ export const createTabStore = (initialSettings: { config: Config, initialMessage
     setConfig,
     setParseErrorMessages,
     setConfigMarkerMessages,
+    setCommitMessage,
 
     // notifiers
     messageEditorNextMarkerActionObservable: messageEditorNextMarkerActionSubject.observable,

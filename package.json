@@ -1,7 +1,40 @@
 {
-  "name": "root",
-  "private": true,
+  "name": "commit-editor",
+  "version": "0.0.2",
+  "description": "",
+  "bin": "src/bin/serve-commit-editor.js",
+  "author": {
+    "email": "thomas@wtho.de",
+    "name": "Thomas Wirth",
+    "url": "https://github.com/wtho"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wtho/commit-editor"
+  },
+  "homepage": "https://github.com/wtho/commit-editor",
+  "keywords": [
+    "commit-editor",
+    "conventional-commits",
+    "commitlint",
+    "semantic commit messages",
+    "semantic commits",
+    "semantic-release"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "node-static": "^0.7.11",
+    "open": "^8.2.1",
+    "ws": "^7.5.2",
+    "ts-node": "^10.0.0",
+    "tslib": "^2.3.0"
+  },
   "devDependencies": {
+    "@types/node-static": "^0.7.7",
+    "@types/ws": "^7.4.6",
     "lerna": "^4.0.0"
   }
 }

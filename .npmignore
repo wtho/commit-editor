@@ -1,0 +1,9 @@
+commit-editor-app
+lerna.json
+.github
+node_modules
+TODO.md
+.vscode/
+.prettierrc.js
+.netlify/
+docs/

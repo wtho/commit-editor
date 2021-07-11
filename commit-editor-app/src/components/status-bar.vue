@@ -58,7 +58,7 @@
         This link brings you to the <b>Semantic Release specification</b>
       </template>
     </monaco-style-tooltip>
-    <monaco-style-tooltip position="top" width="12rem">
+    <monaco-style-tooltip position="top" width="12rem" align="inline-end">
       <a
         href="https://github.com/wtho/commit-editor"
         target="_blank"
@@ -123,7 +123,7 @@ export default defineComponent({
         ...parseErrors,
         `${
           markers.length > 0
-            ? `${markers.length} Problems (click to reveal)`
+            ? `${markers.length} ${markers.length === 1 ? 'Problem' : 'Problems'} (click to reveal)`
             : ''
         }`,
       ].filter((msg) => !!msg)

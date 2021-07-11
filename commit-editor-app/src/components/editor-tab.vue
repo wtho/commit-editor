@@ -1,6 +1,5 @@
 <template>
   <action-panel />
-
   <div class="editors">
     <message-editor />
     <div v-if="configEditorOpen" class="divider"></div>
@@ -51,13 +50,17 @@ export default defineComponent({
         ],
       },
     }
-    const tabStore = createTabStore({ config: defaultConfig, initialMessage: '' })
+    const commitEditorStore = inject<CommitEditorStore>(commitEditorStoreSymbol)
+
+    const initialMessage: string = commitEditorStore?.state.initialMessage ?? ''
+    const initialConfig = (commitEditorStore?.state.initialConfig ?? defaultConfig) as Config
+
+    const tabStore = createTabStore({ config: initialConfig, initialMessage })
     provide(
       tabStoreSymbol,
       tabStore,
     )
 
-    const commitEditorStore = inject<CommitEditorStore>(commitEditorStoreSymbol)
     const configEditorOpen = computed(
       () => commitEditorStore?.state.configEditorOpen
     )

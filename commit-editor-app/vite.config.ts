@@ -13,6 +13,7 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: '../web-app-dist',
     rollupOptions: {
       output: {
         manualChunks: {

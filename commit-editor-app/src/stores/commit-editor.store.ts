@@ -1,14 +1,16 @@
-import { reactive, readonly } from 'vue'
+import { reactive, readonly, watch } from 'vue'
 import { NotificationSubject } from '../lib/observable'
+import type { WebSocketHandler } from '../lib/web-socket'
 import type { Config } from '../types'
 
 export const commitEditorStoreSymbol = Symbol('commit-editor-store')
 
 export const createCommitEditorStore = (initialSettings: {
-  configEditorOpen: boolean,
-  openedWithParams: boolean,
-  urlParamMessage?: string,
+  configEditorOpen: boolean
+  openedWithParams: boolean
+  urlParamMessage?: string
   urlParamConfig?: Config
+  webSocketHandler: WebSocketHandler
 }) => {
   const parseErrorMessages: string[] = []
   const configMarkerMessages: string[] = []
@@ -19,7 +21,12 @@ export const createCommitEditorStore = (initialSettings: {
     parseErrorMessages,
     configMarkerMessages,
     configErrors,
+    initialMessage: initialSettings.urlParamMessage,
+    initialConfig: initialSettings.urlParamConfig,
+    webSocketOpen: false
   })
+
+  watch(() => initialSettings.webSocketHandler.open.value, open => state.webSocketOpen = open)
 
   const toggleConfigEditor = () => {
     state.configEditorOpen = !state.configEditorOpen
@@ -49,8 +56,11 @@ export const createCommitEditorStore = (initialSettings: {
   const configEditorNextMarkerActionSubject = new NotificationSubject<void>()
   const configEditorNextMarkerActionTriggered = () => configEditorNextMarkerActionSubject.notify()
 
+  const sendViaWebSocket = (message?: string) => initialSettings.webSocketHandler.send(message)
+
   return {
     state: readonly(state),
+    sendViaWebSocket,
     toggleConfigEditor,
     setParseErrorMessages,
     setConfigMarkerMessages,

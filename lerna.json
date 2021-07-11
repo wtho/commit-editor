@@ -1,7 +1,6 @@
 {
   "packages": [
-    "commit-editor-app",
-    "git-core-editor-bridge"
+    "commit-editor-app"
   ],
   "version": "0.0.1"
 }

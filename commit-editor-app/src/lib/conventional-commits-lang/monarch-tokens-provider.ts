@@ -183,7 +183,10 @@ export function getConventionalCommitTokensProvider(
         [/(.*)$/, { token: 'header-description', next: nextEmptyLine }],
       ],
 
-      emptyLine: [[/(.*)/, { token: 'empty-line', next: '@bodyLines' }]],
+      emptyLine: [
+        [/#(.*)/, { token: 'comment', next: '@bodyLines' }],
+        [/(.*)/, { token: 'empty-line', next: '@bodyLines' }],
+      ],
 
       bodyLines: [
         [

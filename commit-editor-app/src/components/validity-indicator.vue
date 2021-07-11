@@ -14,7 +14,14 @@
       />
     </svg> -->
     <div
-      v-if="!loading && !hasConfigError && errorCount === 0 && warningCount === 0"
+      v-if="!loading && messageEmpty && !hasConfigError && errorCount === 0 && warningCount === 0"
+      class="warning-label"
+    >
+      <icon icon="warning" :width="24" :height="24" color="#FFCC00" />
+      <span>message is empty</span>
+    </div>
+    <div
+      v-if="!loading && !messageEmpty && !hasConfigError && errorCount === 0 && warningCount === 0"
       class="valid"
     >
       <icon icon="checkmark" :width="24" :height="24" />
@@ -30,13 +37,16 @@
       <icon v-if="warningCount > 0" icon="warning" :width="24" :height="24" color="#FFCC00" />
       <span v-if="warningCount > 0">{{ warningCount }}</span>
     </button>
-    <div
+    <monaco-style-tooltip
       v-if="!loading && hasConfigError"
       class="problem-label"
     >
       <icon v-if="hasConfigError" icon="config" :width="24" :height="24" color="#F48771" />
       <span v-if="hasConfigError">config error</span>
-    </div>
+      <template v-slot:tooltip-content>
+        Hover the error symbol in the status bar on the bottom for more information
+      </template>
+    </monaco-style-tooltip>
   </div>
 </template>
 
@@ -45,11 +55,13 @@ import { computed, defineComponent, inject, ref } from 'vue'
 import { monaco } from '../lib/monaco'
 import { TabStore, tabStoreSymbol } from '../stores/tab.store'
 import Icon from './icon.vue'
+import MonacoStyleTooltip from './monaco-style-tooltip.vue'
 
 export default defineComponent({
   name: 'validity-indicator',
   components: {
     Icon,
+    MonacoStyleTooltip,
   },
   setup() {
     const tabStore = inject<TabStore>(tabStoreSymbol)
@@ -69,6 +81,7 @@ export default defineComponent({
         ).length ?? 0
     )
     const hasConfigError = computed(() => tabStore?.state.configErrors.length ?? 0 > 0)
+    const messageEmpty = computed(() => !tabStore?.state.commitMessage)
 
     const clickError = () => tabStore?.messageEditorNextMarkerActionTriggered()
 
@@ -78,13 +91,14 @@ export default defineComponent({
       clickError,
       loading,
       hasConfigError,
+      messageEmpty,
     }
   },
 })
 </script>
 
 <style scoped>
-.problem-button, .problem-label {
+.problem-button, .problem-label, .warning-label {
   display: inline-flex;
   align-items: center;
   color: #737373;
@@ -123,10 +137,13 @@ export default defineComponent({
   margin-left: 0.5rem;
 }
 
-.problem-button > span, .problem-label > span {
+.warning-label {
+}
+
+.problem-button > span, .problem-label > span, .warning-label > span {
   margin-left: 0.5rem;
 }
-.problem-button > span + svg, .problem-label > span + svg {
+.problem-button > span + svg, .problem-label > span + svg, .warning-label > span + svg {
   margin-left: 1rem;
 }
 

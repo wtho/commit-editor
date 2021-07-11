@@ -2,6 +2,7 @@
   "name": "commit-editor",
   "description": "Interactive commitlint support to boost your conventional commits and semantic release productivity",
   "version": "0.0.1",
+  "private": true,
   "author": {
     "email": "thomas@wtho.de",
     "name": "Thomas Wirth",

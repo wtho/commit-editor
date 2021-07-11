@@ -78,11 +78,13 @@ export default defineComponent({
         }
         Object.entries(conf).forEach(([confRawKey, confVal]) => {
           const confKey = confRawKey as keyof Config
-          if (typeof confVal === 'object') {
+          if (typeof confVal === 'object' && !!confVal) {
             mergedConf[confKey] = {
               ...(mergedConf[confKey] ?? ({} as any)),
               ...confVal,
             }
+          } else if ((confVal === null || confVal === undefined) && typeof mergedConf[confKey] === 'object' && !!mergedConf[confKey]) {
+            // do not override merged conf key with null/undefined
           } else {
             mergedConf[confKey] = confVal as any
           }

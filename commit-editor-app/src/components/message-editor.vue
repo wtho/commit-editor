@@ -50,9 +50,14 @@ export default defineComponent({
 
     const evaluate = async () => {
       if (!messageModel) {
+        tabStore?.setCommitMessage('')
         return
       }
       const commitMessage = messageModel.value?.getValue()
+      tabStore?.setCommitMessage(commitMessage ?? '')
+      if (typeof commitMessage === 'string') {
+        commitEditorStore?.sendViaWebSocket(commitMessage)
+      }
       const { rules, ...options } = (tabStore?.state.config ?? {}) as Config
       const { markers, semVerUpdate, configErrors } = await validate({
         commitMessage,

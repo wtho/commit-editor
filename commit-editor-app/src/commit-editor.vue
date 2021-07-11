@@ -270,6 +270,17 @@ h1 {
   /* font-family: 'Fira Code', monospace; */
   font-family: 'Quicksand', sans-serif;
 }
+html {
+  font-family: 'Quicksand', sans-serif;
+}
+button {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.8rem;
+}
+
+.monaco-keybinding {
+  font-family: "Droid Sans Mono", monospace, monospace, "Droid Sans Fallback"
+}
 
 #commit-editor {
   display: flex;
