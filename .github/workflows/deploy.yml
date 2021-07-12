@@ -59,43 +59,43 @@ jobs:
           path: web-app-dist
 
 
-  e2e-local:
-    runs-on: ubuntu-latest
-    environment: netlify
-    needs:
-      - build
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
+  # e2e-local:
+  #   runs-on: ubuntu-latest
+  #   environment: netlify
+  #   needs:
+  #     - build
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v2
 
-      - name: restore cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+  #     - name: restore cache
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: |
+  #           node_modules
+  #           */node_modules
+  #         key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: download web app
-        uses: actions/download-artifact@v2
-        with:
-          name: web-app-dist
+  #     - name: download web app
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: web-app-dist
 
-      - name: run local cypress e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          working-directory: ./e2e
-          start: npm run serve-web-app -- -- --port 9999
-          wait-on: 'http://localhost:9999'
+  #     - name: run local cypress e2e tests
+  #       uses: cypress-io/github-action@v2
+  #       with:
+  #         working-directory: ./e2e
+  #         start: npm run serve-web-app -- -- --port 9080
+  #         wait-on: 'http://localhost:9080'
 
-      - name: deploy to netlify
-        id: netlify_deploy_build
-        uses: netlify/actions/cli@master
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          args: deploy --dir=web-app-dist
+  #     - name: deploy to netlify
+  #       id: netlify_deploy_build
+  #       uses: netlify/actions/cli@master
+  #       env:
+  #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  #         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  #       with:
+  #         args: deploy --dir=web-app-dist
 
   deploy:
     runs-on: ubuntu-latest
@@ -103,7 +103,7 @@ jobs:
     needs:
       - build
       - unit-test
-      - e2e-local
+      #- e2e-local
     steps:
       - name: download web app
         uses: actions/download-artifact@v2

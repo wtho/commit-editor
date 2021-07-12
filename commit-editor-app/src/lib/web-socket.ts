@@ -8,7 +8,7 @@ export class WebSocketHandler {
 
   constructor(httpProtocol: string, host: string) {
     this.webSocket = new WebSocket(
-      `${httpProtocol === 'https' ? 'wss' : 'ws'}://${host}/`
+      `${httpProtocol === 'https:' ? 'wss:' : 'ws:'}//${host}/`
     )
     this.webSocket.onopen = () => {
       this.webSocketInitialize?.()
