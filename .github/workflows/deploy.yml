@@ -59,14 +59,20 @@ jobs:
           path: web-app-dist
 
 
-  e2e-local:
+  e2e:
     runs-on: ubuntu-latest
-    environment: netlify
+    environment: netlify-test
     needs:
       - build
     steps:
       - name: checkout
         uses: actions/checkout@v2
+
+      - name: download web app
+        uses: actions/download-artifact@v2
+        with:
+          name: web-app-dist
+          path: web-app-dist
 
       - name: restore cache
         uses: actions/cache@v2
@@ -76,26 +82,17 @@ jobs:
             */node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: download web app
-        uses: actions/download-artifact@v2
-        with:
-          name: web-app-dist
+      - name: deploy draft
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: echo "draft_url=$(npx netlify deploy --dir=web-app-dist | grep 'Draft URL:' | grep -Eo 'https://.*\.netlify\.app')" >> $GITHUB_ENV
 
       - name: run local cypress e2e tests
         uses: cypress-io/github-action@v2
         with:
           working-directory: ./e2e
-          start: npm run serve-web-app -- -- --port 9999
-          wait-on: 'http://localhost:9999'
-
-      - name: deploy to netlify
-        id: netlify_deploy_build
-        uses: netlify/actions/cli@master
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          args: deploy --dir=web-app-dist
+          config: baseUrl=${{ env.draft_url }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -103,18 +100,17 @@ jobs:
     needs:
       - build
       - unit-test
-      - e2e-local
+      - e2e
     steps:
       - name: download web app
         uses: actions/download-artifact@v2
         with:
           name: web-app-dist
+          path: web-app-dist
 
       - name: deploy to netlify
-        uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        with:
-          args: deploy --dir=web-app-dist --prod
+        run: npx netlify deploy --dir=web-app-dist --prod
 
