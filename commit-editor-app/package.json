@@ -1,5 +1,5 @@
 {
-  "name": "commit-editor",
+  "name": "commit-editor-app",
   "description": "Interactive commitlint support to boost your conventional commits and semantic release productivity",
   "version": "0.0.1",
   "private": true,

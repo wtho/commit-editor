@@ -1,0 +1,122 @@
+name: test
+on: [push, pull_request]
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: deps and run tests
+        run: |
+          lerna bootstrap
+          cd commit-editor-app
+          npm test -- --collectCoverage
+
+      - name: prepare coverage report
+        run: |
+          mkdir coverage
+          cat commit-editor-app/coverage/lcov.info | sed 's/^SF:/SF:commit-editor-app\//g' > coverage/lcov.info
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: install and build
+        run: |
+          lerna bootstrap
+          cd commit-editor-app
+          npm run build
+
+      - name: archive web-app
+        uses: actions/upload-artifact@v2
+        with:
+          name: web-app-dist
+          path: web-app-dist
+
+
+  e2e-local:
+    runs-on: ubuntu-latest
+    environment: netlify
+    needs:
+      - build
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: download web app
+        uses: actions/download-artifact@v2
+        with:
+          name: web-app-dist
+
+     # - name: Start server in the background
+     #   run: cd commit-editor-app && npm run serve &
+
+      - name: run local cypress e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ./e2e
+          start: cd ../commit-editor-app && npm run serve
+
+      - name: deploy to netlify
+        id: netlify_deploy_build
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=web-app-dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment: netlify
+    needs:
+      - build
+      - unit-test
+      - e2e-local
+    steps:
+      - name: download web app
+        uses: actions/download-artifact@v2
+        with:
+          name: web-app-dist
+
+      - name: deploy to netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=web-app-dist --prod
+
