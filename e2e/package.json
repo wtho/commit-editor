@@ -7,7 +7,7 @@
     "serve-web-app": "cd ../commit-editor-app && npm run serve"
   },
   "devDependencies": {
-    "cypress": "^7.7.0",
+    "cypress": "^8.0.0",
     "typescript": "^4.3.5"
   }
 }
