@@ -1,7 +1,7 @@
 <template>
   <svg
-    :width="width"
-    :height="height"
+    :width="svgWidth"
+    :height="svgHeight"
     :viewBox="viewBox"
     :style="styles"
     :class="classes"
@@ -50,7 +50,7 @@ const availableIcons = [
 ]
 
 export default defineComponent({
-  name: 'icon',
+  name: 'Icon',
   props: {
     width: {
       type: Number,
@@ -68,6 +68,7 @@ export default defineComponent({
     },
     color: {
       type: String,
+      default: null,
     },
     flippedVertically: {
       type: Boolean,
@@ -75,23 +76,23 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { width, height, icon, color } = props
     const { viewBox, paths } = {
       viewBox: '0 4 16 16',
       paths: [],
-      ...(availableIcons.find((availableIcon) => availableIcon.id === icon) ??
+      ...(availableIcons.find((availableIcon) => availableIcon.id === props.icon) ??
         {}),
     }
 
     const styles: Record<string, string> = {}
-    if (color) {
-      styles.color = color
+    if (props.color) {
+      // eslint-disable-next-line vue/no-setup-props-destructure
+      styles.color = props.color
     }
     const classes = computed(() => (props.flippedVertically ? ['flipped'] : []))
 
     return {
-      width,
-      height,
+      svgWidth: props.width,
+      svgHeight: props.height,
       viewBox,
       paths,
       styles,

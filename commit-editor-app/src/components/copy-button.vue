@@ -36,7 +36,7 @@ import {
 import Icon from '../components/icon.vue'
 
 export default defineComponent({
-  name: 'copy-button',
+  name: 'CopyButton',
   components: {
     Icon,
   },

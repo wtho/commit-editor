@@ -61,7 +61,7 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
-    environment: netlify-test
+    environment: netlidraft
     needs:
       - build
     steps:

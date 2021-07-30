@@ -27,7 +27,7 @@ import { TabStore, tabStoreSymbol } from '../stores/tab.store'
 import type { Config } from '../types'
 
 export default defineComponent({
-  name: 'message-editor',
+  name: 'MessageEditor',
   setup: () => {
     const messageEditor =
       shallowRef<monaco.editor.IStandaloneCodeEditor | null>(null)
@@ -49,7 +49,7 @@ export default defineComponent({
     )
 
     const evaluate = async () => {
-      if (!messageModel) {
+      if (!messageModel.value) {
         tabStore?.setCommitMessage('')
         return
       }
@@ -71,7 +71,7 @@ export default defineComponent({
 
     watch(
       () => tabStore?.state.config,
-      (conf, _prevConf) => evaluate()
+      (_conf, _prevConf) => evaluate()
     )
 
     tabStore?.messageEditorNextMarkerActionObservable.subscribe(() => {

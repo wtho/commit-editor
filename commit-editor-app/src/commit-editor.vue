@@ -12,7 +12,7 @@
 
     <editor-tab />
   </main>
-  <status-bar />
+  <StatusBar />
 </template>
 
 <script lang="ts">
@@ -26,7 +26,7 @@ import {
 } from './stores/commit-editor.store'
 
 export default defineComponent({
-  name: 'commit-editor',
+  name: 'CommitEditor',
   components: {
     EditorTab,
     StatusBar,

@@ -16,6 +16,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'MonacoStyleTooltip',
   props: {
     width: {
       type: String,
@@ -23,29 +24,29 @@ export default defineComponent({
     },
     position: {
       type: String,
-      validator: (input: string) => ['top', 'bottom'].includes(input)
+      validator: (input: string) => ['top', 'bottom'].includes(input),
+      default: 'top',
     },
     align: {
       type: String,
-      validator: (input: string) => ['inline-start', 'inline-center', 'inline-end'].includes(input),
-      default: 'inline-center'
+      validator: (input: string) =>
+        ['inline-start', 'inline-center', 'inline-end'].includes(input),
+      default: 'inline-center',
     },
   },
-
-  name: 'monaco-style-tooltip',
-  setup({ width, position, align }) {
+  setup(props) {
     const styles = {
-      width,
+      width: props.width,
     }
     const classes: string[] = []
-    if (position === 'top') {
+    if (props.position === 'top') {
       classes.push('tooltip-wrapper--top')
     } else {
       classes.push('tooltip-wrapper--bottom')
     }
-    if (align === 'inline-start') {
+    if (props.align === 'inline-start') {
       classes.push('tooltip-wrapper--align-inline-start')
-    } else if (align === 'inline-end') {
+    } else if (props.align === 'inline-end') {
       classes.push('tooltip-wrapper--align-inline-end')
     } else {
       classes.push('tooltip-wrapper--align-inline-center')

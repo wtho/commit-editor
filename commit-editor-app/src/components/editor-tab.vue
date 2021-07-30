@@ -20,7 +20,7 @@ import {
 } from '../stores/commit-editor.store'
 
 export default defineComponent({
-  name: 'editor-tab',
+  name: 'EditorTab',
   components: {
     MessageEditor,
     ConfigEditor,

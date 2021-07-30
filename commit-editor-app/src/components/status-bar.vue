@@ -3,7 +3,7 @@
     <button class="status-button" @click="toggleConfigEditor">
       <icon icon="config" />
       <span>commitlint config</span>
-      <icon icon="chevron-up" :flippedVertically="configEditorOpen" />
+      <icon icon="chevron-up" :flipped-vertically="configEditorOpen" />
     </button>
     <monaco-style-tooltip
       v-if="configErrorTexts.length > 0"
@@ -18,9 +18,9 @@
           color="#F48771"
         />
       </button>
-      <template v-slot:tooltip-content>
-        <template v-for="text in configErrorTexts">
-          <span :key="text">{{ text }}</span>
+      <template #tooltip-content>
+        <template v-for="text in configErrorTexts" :key="text">
+          <span>{{ text }}</span>
         </template>
       </template>
     </monaco-style-tooltip>
@@ -38,7 +38,7 @@
         <icon icon="external-link" :width="14" :height="20" />
       </a>
 
-      <template v-slot:tooltip-content>
+      <template #tooltip-content>
         This link takes you to the <b>Conventional Commits specification</b>
       </template>
     </monaco-style-tooltip>
@@ -54,7 +54,7 @@
         <span>docs</span>
         <icon icon="external-link" :width="14" :height="20" />
       </a>
-      <template v-slot:tooltip-content>
+      <template #tooltip-content>
         This link takes you to the <b>Semantic Release specification</b>
       </template>
     </monaco-style-tooltip>
@@ -70,7 +70,7 @@
         <span>repo</span>
         <icon icon="external-link" :width="14" :height="20" />
       </a>
-      <template v-slot:tooltip-content>
+      <template #tooltip-content>
         This link takes you to the <b>GitHub Repository</b> of this project
       </template>
     </monaco-style-tooltip>
@@ -103,7 +103,7 @@ import MonacoStyleTooltip from './monaco-style-tooltip.vue'
 import Icon from './icon.vue'
 
 export default defineComponent({
-  name: 'status-bar',
+  name: 'StatusBar',
   components: {
     MonacoStyleTooltip,
     Icon,
@@ -123,7 +123,9 @@ export default defineComponent({
         ...parseErrors,
         `${
           markers.length > 0
-            ? `${markers.length} ${markers.length === 1 ? 'Problem' : 'Problems'} (click to reveal)`
+            ? `${markers.length} ${
+                markers.length === 1 ? 'Problem' : 'Problems'
+              } (click to reveal)`
             : ''
         }`,
       ].filter((msg) => !!msg)

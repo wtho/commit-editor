@@ -9,7 +9,7 @@
         <span class="sync-on">
           Close tab to commit
         </span>
-        <template v-slot:tooltip-content>
+        <template #tooltip-content>
           Your commit message is in sync with git
         </template>
       </monaco-style-tooltip>
@@ -30,7 +30,7 @@ import CopyButton from '../components/copy-button.vue'
 import MonacoStyleTooltip from '../components/monaco-style-tooltip.vue'
 
 export default defineComponent({
-  name: 'action-panel',
+  name: 'ActionPanel',
   components: {
     ValidityIndicator,
     SemanticVersioningIndicator,

@@ -43,7 +43,7 @@
     >
       <icon v-if="hasConfigError" icon="config" :width="24" :height="24" color="#F48771" />
       <span v-if="hasConfigError">config error</span>
-      <template v-slot:tooltip-content>
+      <template #tooltip-content>
         Hover the error symbol in the status bar on the bottom for more information
       </template>
     </monaco-style-tooltip>
@@ -58,7 +58,7 @@ import Icon from './icon.vue'
 import MonacoStyleTooltip from './monaco-style-tooltip.vue'
 
 export default defineComponent({
-  name: 'validity-indicator',
+  name: 'ValidityIndicator',
   components: {
     Icon,
     MonacoStyleTooltip,
@@ -66,6 +66,7 @@ export default defineComponent({
   setup() {
     const tabStore = inject<TabStore>(tabStoreSymbol)
 
+    // eslint-disable-next-line no-undef
     const loading = ref<boolean>(false)
 
     const errorCount = computed(

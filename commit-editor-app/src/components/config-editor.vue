@@ -27,7 +27,7 @@ import { initConfigSchema } from '../lib/config-json-schema'
 import { debounce } from '../lib/debounce'
 
 export default defineComponent({
-  name: 'config-editor',
+  name: 'ConfigEditor',
   setup: () => {
     const configEditor = shallowRef<monaco.editor.IStandaloneCodeEditor | null>(
       null
@@ -73,20 +73,19 @@ export default defineComponent({
         ),
         { rules, defaultIgnores },
       ].reduce((aggregatedConf: Config, conf: Config) => {
-        const mergedConf = {
+        const mergedConf: Record<string, object | string | boolean> = {
           ...aggregatedConf,
         }
-        Object.entries(conf).forEach(([confRawKey, confVal]) => {
-          const confKey = confRawKey as keyof Config
+        Object.entries(conf).forEach(([confKey, confVal]) => {
           if (typeof confVal === 'object' && !!confVal) {
             mergedConf[confKey] = {
-              ...(mergedConf[confKey] ?? ({} as any)),
+              ...((mergedConf[confKey] as object) ?? {}),
               ...confVal,
             }
           } else if ((confVal === null || confVal === undefined) && typeof mergedConf[confKey] === 'object' && !!mergedConf[confKey]) {
             // do not override merged conf key with null/undefined
           } else {
-            mergedConf[confKey] = confVal as any
+            mergedConf[confKey] = confVal
           }
         })
         return mergedConf
@@ -145,7 +144,7 @@ export default defineComponent({
         () => handleConfigUpdate(monaco, configModel.value?.getValue()!),
         300
       )
-      configEditor.value.onDidChangeModelContent((event) => debouncedDispatch())
+      configEditor.value.onDidChangeModelContent((_event) => debouncedDispatch())
 
       monaco.editor.onDidChangeMarkers((changedEditorUris) => {
         const configModelUri = changedEditorUris.find(

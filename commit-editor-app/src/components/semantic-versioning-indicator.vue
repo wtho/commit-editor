@@ -13,7 +13,7 @@
       <template v-else> 1.2.4 </template>
     </div>
 
-    <template v-slot:tooltip-content>
+    <template #tooltip-content>
       <template v-if="major">
         This commit introduces <b>a new major version</b> according to
         conventional commits, semantic release and semantic versioning.
@@ -41,7 +41,7 @@ import MonacoStyleTooltip from './monaco-style-tooltip.vue'
 import Icon from './icon.vue'
 
 export default defineComponent({
-  name: 'semantic-versioning-indicator',
+  name: 'SemanticVersioningIndicator',
   components: {
     MonacoStyleTooltip,
     Icon,
