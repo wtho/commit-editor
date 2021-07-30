@@ -31,7 +31,7 @@
   "dependencies": {
     "@commitlint/config-angular": "^12.1.4",
     "@commitlint/config-angular-type-enum": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/config-conventional": "^13.1.0",
     "@commitlint/is-ignored": "^12.1.4",
     "@commitlint/lint": "^12.1.4",
     "@commitlint/rules": "^12.1.4",
