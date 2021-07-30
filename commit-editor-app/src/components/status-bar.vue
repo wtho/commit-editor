@@ -19,8 +19,8 @@
         />
       </button>
       <template v-slot:tooltip-content>
-        <template v-for="text in configErrorTexts" :key="text">
-          <span>{{ text }}</span>
+        <template v-for="text in configErrorTexts">
+          <span :key="text">{{ text }}</span>
         </template>
       </template>
     </monaco-style-tooltip>
@@ -39,7 +39,7 @@
       </a>
 
       <template v-slot:tooltip-content>
-        This link brings you to the <b>Conventional Commits specification</b>
+        This link takes you to the <b>Conventional Commits specification</b>
       </template>
     </monaco-style-tooltip>
     <monaco-style-tooltip position="top" width="12rem">
@@ -55,7 +55,7 @@
         <icon icon="external-link" :width="14" :height="20" />
       </a>
       <template v-slot:tooltip-content>
-        This link brings you to the <b>Semantic Release specification</b>
+        This link takes you to the <b>Semantic Release specification</b>
       </template>
     </monaco-style-tooltip>
     <monaco-style-tooltip position="top" width="12rem" align="inline-end">
@@ -71,7 +71,7 @@
         <icon icon="external-link" :width="14" :height="20" />
       </a>
       <template v-slot:tooltip-content>
-        This link brings you to the <b>GitHub Repository</b> of this project
+        This link takes you to the <b>GitHub Repository</b> of this project
       </template>
     </monaco-style-tooltip>
     <!-- <monaco-style-tooltip position="top" width="12rem" align="inline-end">

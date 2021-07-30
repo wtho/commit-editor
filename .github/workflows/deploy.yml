@@ -88,7 +88,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: echo "draft_url=$(npx netlify deploy --dir=web-app-dist | grep 'Draft URL:' | grep -Eo 'https://.*\.netlify\.app')" >> $GITHUB_ENV
 
-      - name: run local cypress e2e tests
+      - name: run cypress e2e tests on deployed draft
         uses: cypress-io/github-action@v2
         with:
           working-directory: ./e2e
