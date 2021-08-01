@@ -1,0 +1,9 @@
+{
+  "name": "stub-execa",
+  "version": "0.0.1",
+  "description": "",
+  "main": "execa.js",
+  "type" :"module",
+  "dependencies": {
+  }
+}

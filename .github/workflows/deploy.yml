@@ -102,6 +102,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: netlify
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs:
       - build
       - unit-test

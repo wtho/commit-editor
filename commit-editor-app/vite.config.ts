@@ -10,6 +10,7 @@ export default defineConfig({
       fs: 'stub-fs',
       path: 'stub-path',
       util: 'stub-util',
+      execa: 'stub-execa',
     },
   },
   build: {
