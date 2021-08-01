@@ -33,7 +33,7 @@
     "@commitlint/config-angular-type-enum": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@commitlint/is-ignored": "^12.1.4",
-    "@commitlint/lint": "^12.1.4",
+    "@commitlint/lint": "^13.1.0",
     "@commitlint/rules": "^12.1.4",
     "conventional-changelog-conventionalcommits": "^4.6.0",
     "js-convert-case": "^4.1.2",
