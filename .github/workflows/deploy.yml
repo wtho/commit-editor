@@ -1,5 +1,9 @@
 name: deploy
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   unit-test:
@@ -61,18 +65,11 @@ jobs:
 
   e2e:
     runs-on: ubuntu-latest
-    environment: netlidraft
     needs:
       - build
     steps:
       - name: checkout
         uses: actions/checkout@v2
-
-      - name: download web app
-        uses: actions/download-artifact@v2
-        with:
-          name: web-app-dist
-          path: web-app-dist
 
       - name: restore cache
         uses: actions/cache@v2
@@ -82,17 +79,25 @@ jobs:
             */node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: deploy draft
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: echo "draft_url=$(npx netlify deploy --dir=web-app-dist | grep 'Draft URL:' | grep -Eo 'https://.*\.netlify\.app')" >> $GITHUB_ENV
+      - name: install
+        run: |
+          lerna bootstrap
+
+      - name: download web app
+        uses: actions/download-artifact@v2
+        with:
+          name: web-app-dist
+          path: web-app-dist
 
       - name: run cypress e2e tests on deployed draft
         uses: cypress-io/github-action@v2
         with:
           working-directory: ./e2e
-          config: baseUrl=${{ env.draft_url }}
+          start: npm run serve-web-app
+          wait-on: 'http://localhost:5000'
+          browser: chrome
+          headless: true
+
 
   deploy:
     runs-on: ubuntu-latest
