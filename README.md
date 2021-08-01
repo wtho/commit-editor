@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://www.npmjs.com/package/commit-editor"><img src="https://img.shields.io/npm/v/commit-editor/latest.svg?style=flat-square" alt="NPM Version" /></a>
-    <a href="https://github.com/wtho/commit-editor/actions/workflows/test.yml"><img src="https://img.shields.io/github/workflow/status/wtho/commit-editor/build%20and%20deploy?style=flat-square" alt="Deployment Pipeline" /></a>
+    <a href="https://github.com/wtho/commit-editor/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/workflow/status/wtho/commit-editor/build%20and%20deploy?style=flat-square" alt="Deployment Pipeline" /></a>
     <a href="https://coveralls.io/github/wtho/commit-editor?branch=main"><img src="https://img.shields.io/coveralls/github/wtho/commit-editor?style=flat-square" alt="Test Coverage" /></a>
     <a href="https://github.com/wtho/commit-editor/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/commit-editor?style=flat-square" alt="GitHub license" /></a>
 </p>
