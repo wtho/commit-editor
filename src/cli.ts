@@ -13,20 +13,6 @@ import { loadCommitlintConfig } from './commitlint-config-loader'
 import { spawn } from 'child_process'
 import { promises as fs } from 'fs'
 
-// * git-ce [...options]
-//   * runs git -c core.editor=git-commit-bridge commit [...options]
-//
-// * git-commit-bridge
-//   * reads precomposed commit message
-//   * reads local commitlint config
-//   * starts local webserver on port <PORT>
-//   * opens http://localhost:<PORT>?config=<CONFIG>&message=<MESSAGE> in browser
-//   * handles incoming websocket connection
-//     * each commit message change is (maybe debounced) sent via ws
-//   * on websocket close ends commit
-//     * writes commit to commit msg file
-//     * exits bridge to tell git commit msg editing is done
-
 // possible configuration
 // * which browser/browser-session (open)
 // * trigger website open at all

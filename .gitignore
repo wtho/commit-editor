@@ -6,6 +6,8 @@ web-app-dist
 TODO.md
 *.local
 
+build/
+
 coverage/
 
 cypress/videos

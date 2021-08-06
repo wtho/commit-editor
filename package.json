@@ -2,7 +2,7 @@
   "name": "commit-editor",
   "version": "0.0.2",
   "description": "",
-  "bin": "src/bin/serve-commit-editor.js",
+  "bin": "src/bin/serve-commit-editor-prod.js",
   "author": {
     "email": "thomas@wtho.de",
     "name": "Thomas Wirth",
@@ -23,18 +23,25 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-dev": "./src/bin/serve-commit-editor-dev.js",
+    "run-build": "node src/bin/serve-commit-editor-dev.js",
+    "build": "rimraf ./build && tsc -p ./tsconfig.build.json"
   },
   "dependencies": {
     "node-static": "^0.7.11",
     "open": "^8.2.1",
-    "ws": "^7.5.2",
     "ts-node": "^10.0.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "ws": "^8.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.24",
     "@types/node-static": "^0.7.7",
     "@types/ws": "^7.4.6",
-    "lerna": "^4.0.0"
+    "jest": "^27.0.6",
+    "lerna": "^4.0.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.4"
   }
 }
