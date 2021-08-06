@@ -6,7 +6,7 @@ web-app-dist
 TODO.md
 *.local
 
-build/
+cli-build/
 
 coverage/
 

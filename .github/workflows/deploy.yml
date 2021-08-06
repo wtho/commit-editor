@@ -36,7 +36,32 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-  build:
+  build-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: restore cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: install and build
+        run: |
+          lerna bootstrap
+          npm run build
+
+      - name: archive cli-app
+        uses: actions/upload-artifact@v2
+        with:
+          name: cli-build
+          path: cli-build
+
+  build-webapp:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -66,7 +91,7 @@ jobs:
   e2e:
     runs-on: ubuntu-latest
     needs:
-      - build
+      - build-webapp
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -89,7 +114,7 @@ jobs:
           name: web-app-dist
           path: web-app-dist
 
-      - name: run cypress e2e tests on deployed draft
+      - name: run cypress e2e tests
         uses: cypress-io/github-action@v2
         with:
           working-directory: ./e2e
@@ -104,7 +129,7 @@ jobs:
     environment: netlify
     if: ${{ github.ref == 'refs/heads/main' }}
     needs:
-      - build
+      - build-webapp
       - unit-test
       - e2e
     steps:
@@ -119,4 +144,35 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: npx netlify deploy --dir=web-app-dist --prod
+
+
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - build-cli
+      - build-webapp
+      - deploy
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: download cli app
+        uses: actions/download-artifact@v2
+        with:
+          name: cli-build
+
+      - name: download web app
+        uses: actions/download-artifact@v2
+        with:
+          name: web-app-dist
+          path: web-app-dist
+        
+      - name: install semantic-release package
+        run: npm i @semantic-release/changelog @semantic-release/git --no-save
+
+      - name: release
+        uses: codfish/semantic-release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 

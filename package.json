@@ -1,6 +1,6 @@
 {
   "name": "commit-editor",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
   "bin": "src/bin/serve-commit-editor-prod.js",
   "author": {
@@ -23,10 +23,11 @@
   ],
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"no test yet specified\"",
     "run-dev": "./src/bin/serve-commit-editor-dev.js",
-    "run-build": "node src/bin/serve-commit-editor-dev.js",
-    "build": "rimraf ./build && tsc -p ./tsconfig.build.json"
+    "run-build": "node ./cli-build/bin/serve-commit-editor-prod.js",
+    "build": "rimraf ./cli-build && tsc -p ./tsconfig.build.json",
+    "prepublish": "npm run test && npm run build"
   },
   "dependencies": {
     "node-static": "^0.7.11",
