@@ -53,6 +53,7 @@
 <script lang="ts">
 import { computed, defineComponent, inject, ref } from 'vue'
 import { monaco } from '../lib/monaco'
+import { isCommitMessageEmpty } from '../lib/message-empty-check'
 import { TabStore, tabStoreSymbol } from '../stores/tab.store'
 import Icon from './icon.vue'
 import MonacoStyleTooltip from './monaco-style-tooltip.vue'
@@ -82,7 +83,7 @@ export default defineComponent({
         ).length ?? 0
     )
     const hasConfigError = computed(() => tabStore?.state.configErrors.length ?? 0 > 0)
-    const messageEmpty = computed(() => !tabStore?.state.commitMessage)
+    const messageEmpty = computed(() => isCommitMessageEmpty(tabStore?.state.commitMessage || ''))
 
     const clickError = () => tabStore?.messageEditorNextMarkerActionTriggered()
 
