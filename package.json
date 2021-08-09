@@ -2,7 +2,7 @@
   "name": "commit-editor",
   "version": "1.0.1",
   "description": "",
-  "bin": "src/bin/serve-commit-editor-prod.js",
+  "bin": "cli-build/bin/serve-commit-editor-prod.js",
   "author": {
     "email": "thomas@wtho.de",
     "name": "Thomas Wirth",
