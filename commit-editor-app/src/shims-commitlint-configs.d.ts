@@ -18,14 +18,14 @@ declare module 'conventional-changelog-conventionalcommits' {
     config?: Promise<DefaultValues> | (() => DefaultValues) | DefaultValues;
     pkg?: {
       path?: string
-      transform?: (packageJson: object) => object
+      transform?: (_packageJson: object) => object
     }
     append?: boolean
     releaseCount?: number
     skipUnstable?: boolean
-    debug?: (msg: string) => void
-    warn?: (msg: string) => void
-    transform?: (commit: unknown, callback: (err: Error | null, commit: unknown) => void, through2This: unknown, ) => void
+    debug?: (_msg: string) => void
+    warn?: (_msg: string) => void
+    transform?: (_commit: unknown, _callback: (_err: Error | null, _commit: unknown) => void, _through2This: unknown, ) => void
     outputUnreleased?: boolean
     lernaPackage?: unknown
     tagPrefix?: string
@@ -45,20 +45,20 @@ declare module 'conventional-changelog-conventionalcommits' {
     format?: string
     from?: number
     reverse?: boolean
-    debug?: (msg: string) => void
+    debug?: (_msg: string) => void
     parserOpts?: ParserOptions
-    warn?: (msg: string) => void
+    warn?: (_msg: string) => void
   }
   interface WriterOptions {
-    transform?: object | ((commit: object) => string)
+    transform?: object | ((_commit: object) => string)
     groupBy?: string
-    commitGroupSort?: ((commitGroup1: object, commitGroup2: object) => number) | string | string[]
-    commitsSort?: ((commitGroup1: object, commitGroup2: object) => number) | string | string[]
-    noteGroupsSort?: ((commitGroup1: object, commitGroup2: object) => number) | string | string[]
-    notesSort?: ((commitGroup1: object, commitGroup2: object) => number) | string | string[]
+    commitGroupSort?: ((_commitGroup1: object, _commitGroup2: object) => number) | string | string[]
+    commitsSort?: ((_commitGroup1: object, _commitGroup2: object) => number) | string | string[]
+    noteGroupsSort?: ((_commitGroup1: object, _commitGroup2: object) => number) | string | string[]
+    notesSort?: ((_commitGroup1: object, _commitGroup2: object) => number) | string | string[]
     generateOn?: (() => void) | string | any
-    finalizeContext?: (context: Context, options: object, commits: object[], keyCommit: object) => Context 
-    debug?: (msg: string) => void
+    finalizeContext?: (_context: Context, _options: object, _commits: object[], _keyCommit: object) => Context 
+    debug?: (_msg: string) => void
     reverse?: boolean
     includeDetails?: boolean
     ignoreReverted?: boolean
@@ -80,10 +80,10 @@ declare module 'conventional-changelog-conventionalcommits' {
     parserOpts: ParserOptions
     recommendedBumpOpts: {
       parserOpts: ParserOptions
-      whatBump: (...args: unknown[]) => unknown
+      whatBump: (..._args: unknown[]) => unknown
     }
     writerOpts: WriterOptions
   }
-  const conventionalCommits: (options?: Options, gitRawCommitsOpts?: GitRawCommitsOpts, parserOpts?: ParserOptions, writerOpts?: WriterOptions) => ProcessedOptions
+  const conventionalCommits: (_options?: Options, _gitRawCommitsOpts?: GitRawCommitsOpts, _parserOpts?: ParserOptions, _writerOpts?: WriterOptions) => ProcessedOptions
   export default conventionalCommits
 }

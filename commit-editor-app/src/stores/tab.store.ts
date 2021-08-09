@@ -31,7 +31,7 @@ export const createTabStore = (initialSettings: { config: Config, initialMessage
   })
 
   const setMessageEditorMarkers = (markers: monaco.editor.IMarkerData[]) => state.messageEditorMarkers = markers
-  const setMessageEditorMarkerSemVerUpdateStates = (semVerUpdate: MessageSemVerUpdateState) => state.messageSemVerUpdateState = semVerUpdate
+  const setMessageSemVerUpdateStates = (semVerUpdate: MessageSemVerUpdateState) => state.messageSemVerUpdateState = semVerUpdate
   const setConfig = (config: Config) => state.config = config
   const setParseErrorMessages = (parseErrorMessages: string[]) => {
     state.parseErrorMessages = [...parseErrorMessages]
@@ -51,7 +51,7 @@ export const createTabStore = (initialSettings: { config: Config, initialMessage
     state: readonly(state),
     // state updates
     setMessageEditorMarkers,
-    setMessageEditorMarkerSemVerUpdateStates,
+    setMessageSemVerUpdateStates,
     setConfig,
     setParseErrorMessages,
     setConfigMarkerMessages,

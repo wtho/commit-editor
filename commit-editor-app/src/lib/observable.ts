@@ -1,7 +1,7 @@
-type Observer<T> = (value: T) => void
+type Observer<T> = (_value: T) => void
 
 export interface Notifier<T> {
-  subscribe(observer: Observer<T>): void
+  subscribe(_observer: Observer<T>): void
 }
 
 export class NotificationSubject<T> implements Notifier<T> {

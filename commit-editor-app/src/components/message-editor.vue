@@ -65,7 +65,7 @@ export default defineComponent({
         options,
       })
       tabStore?.setMessageEditorMarkers(markers)
-      tabStore?.setMessageEditorMarkerSemVerUpdateStates(semVerUpdate)
+      tabStore?.setMessageSemVerUpdateStates(semVerUpdate)
       tabStore?.setParseErrorMessages(configErrors)
     }
 

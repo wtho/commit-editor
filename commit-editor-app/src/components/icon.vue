@@ -6,6 +6,7 @@
     :style="styles"
     :class="classes"
     fill="currentColor"
+    :alt="altText"
   >
     <path
       v-for="path of paths"
@@ -74,6 +75,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    alt: {
+      type: String,
+      default: 'An icon',
+    }
   },
   setup(props) {
     const { viewBox, paths } = {
@@ -97,6 +102,7 @@ export default defineComponent({
       paths,
       styles,
       classes,
+      altText: props.alt,
     }
   },
 })

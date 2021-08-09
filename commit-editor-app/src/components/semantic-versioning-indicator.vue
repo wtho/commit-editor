@@ -2,13 +2,13 @@
   <monaco-style-tooltip width="200%">
     <div class="semantic-version-indicator mono" :class="{ update: hasUpdate }">
       <template v-if="major">
-        <icon icon="flash" :width="10" :height="16" color="#fe5196" />.0.0
+        <icon icon="flash" :width="10" :height="16" color="#fe5196" alt="A flash icon indicating a version update" />.0.0
       </template>
       <template v-else-if="minor">
-        1.<icon icon="flash" :width="10" :height="16" color="#fe5196" />.0
+        1.<icon icon="flash" :width="10" :height="16" color="#fe5196" alt="A flash icon indicating a version update" />.0
       </template>
       <template v-else-if="patch">
-        1.2.<icon icon="flash" :width="10" :height="16" color="#fe5196" />
+        1.2.<icon icon="flash" :width="10" :height="16" color="#fe5196" alt="A flash icon indicating a version update" />
       </template>
       <template v-else> 1.2.4 </template>
     </div>
