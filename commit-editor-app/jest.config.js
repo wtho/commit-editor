@@ -1,6 +1,8 @@
 /** @type {import('@jest/types').Config.InitialOptions} */
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  collectCoverageFrom: ['src/**/*.ts']
-};
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.vue$': 'vue-jest'
+  },
+  collectCoverageFrom: ['src/**/*.ts'],
+}
