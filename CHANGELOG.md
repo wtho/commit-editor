@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/wtho/commit-editor/compare/v1.0.0...v1.0.1) (2021-08-09)
+
+
+### Bug Fixes
+
+* **webapp:** assess empty message with comments ([#27](https://github.com/wtho/commit-editor/issues/27)) ([42367ac](https://github.com/wtho/commit-editor/commit/42367acafddbd28cad05855de1adb322f17b098c))
+
 # 1.0.0 (2021-08-06)
 
 
