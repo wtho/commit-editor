@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import CommitEditor from './commit-editor.vue'
-import { parseUrlParams } from './lib/parse-from-location'
+import { parseUrlParams } from './lib/parse-options-from-location'
 import { WebSocketHandler } from './lib/web-socket'
 import {
   commitEditorStoreSymbol,
