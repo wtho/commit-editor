@@ -1,9 +1,11 @@
-import { ref } from "vue"
+import { ref } from 'vue'
 
 export class WebSocketHandler {
   private webSocket: WebSocket
   private webSocketInitialize: (() => void) | undefined
-  private webSocketInitialized = new Promise<void>(rs => this.webSocketInitialize = rs)
+  private webSocketInitialized = new Promise<void>(
+    (rs) => (this.webSocketInitialize = rs)
+  )
   open = ref(false)
 
   constructor(httpProtocol: string, host: string) {

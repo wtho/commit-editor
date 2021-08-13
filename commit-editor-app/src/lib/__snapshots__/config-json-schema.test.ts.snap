@@ -1,0 +1,855 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`config-json-schema.ts should snap config schema 1`] = `
+Object {
+  "$id": "internal://server/config.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": Object {
+    "defaultIgnores": Object {
+      "type": "boolean",
+    },
+    "extends": Object {
+      "items": Object {
+        "enum": Array [
+          "@commitlint/config-conventional",
+          "@commitlint/config-angular",
+          "@commitlint/config-angular-type-enum",
+        ],
+      },
+      "type": "array",
+    },
+    "rules": Object {
+      "properties": Object {
+        "body-case": Object {
+          "description": "The body must be written in the configured case:
+'lower-case': default
+'upper-case': UPPERCASE
+'camel-case': camelCase
+'kebab-case': kebab-case
+'pascal-case': PascalCase
+'sentence-case': Sentence case
+'snake-case': snake_case
+'start-case': Start Case",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "enum": Array [
+                "lower-case",
+                "upper-case",
+                "camel-case",
+                "kebab-case",
+                "pascal-case",
+                "sentence-case",
+                "snake-case",
+                "start-case",
+              ],
+            },
+          ],
+          "title": "body is in case value",
+          "type": "array",
+        },
+        "body-empty": Object {
+          "description": "The body must kept empty",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "body is empty",
+          "type": "array",
+        },
+        "body-full-stop": Object {
+          "description": "The body must end with the configured value, e. g. '.'",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "string",
+            },
+          ],
+          "title": "body ends with value",
+          "type": "array",
+        },
+        "body-leading-blank": Object {
+          "description": "The line before the body must be a blank line",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "body begins with blank line",
+          "type": "array",
+        },
+        "body-max-length": Object {
+          "description": "The body can consist of only up to the number of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "body has value or less characters",
+          "type": "array",
+        },
+        "body-max-line-length": Object {
+          "description": "Each line in the body can have a maximum length of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "body lines has value or less characters",
+          "type": "array",
+        },
+        "body-min-length": Object {
+          "description": "The body must consist of at least as many characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "body has value or more characters",
+          "type": "array",
+        },
+        "footer-empty": Object {
+          "description": "A footer is not allowed, it must be empty",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "footer is empty",
+          "type": "array",
+        },
+        "footer-leading-blank": Object {
+          "description": "The line before the footer must be a blank line",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "footer begins with blank line",
+          "type": "array",
+        },
+        "footer-max-length": Object {
+          "description": "The footer can consist of only up to the number of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "footer has value or less characters",
+          "type": "array",
+        },
+        "footer-max-line-length": Object {
+          "description": "Each line in the footer can have a maximum length of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "footer lines has value or less characters",
+          "type": "array",
+        },
+        "footer-min-length": Object {
+          "description": "The footer must consist of at least as many characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "footer has value or more characters",
+          "type": "array",
+        },
+        "header-case": Object {
+          "description": "The header must be written in the configured case:
+'lower-case': default
+'upper-case': UPPERCASE
+'camel-case': camelCase
+'kebab-case': kebab-case
+'pascal-case': PascalCase
+'sentence-case': Sentence case
+'snake-case': snake_case
+'start-case': Start Case",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "enum": Array [
+                "lower-case",
+                "upper-case",
+                "camel-case",
+                "kebab-case",
+                "pascal-case",
+                "sentence-case",
+                "snake-case",
+                "start-case",
+              ],
+            },
+          ],
+          "title": "header is in case value",
+          "type": "array",
+        },
+        "header-full-stop": Object {
+          "description": "The header must end with the configured value, e. g. '.'",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "string",
+            },
+          ],
+          "title": "header ends with value",
+          "type": "array",
+        },
+        "header-max-length": Object {
+          "description": "The header can consist of only up to the number of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "header has value or less characters",
+          "type": "array",
+        },
+        "header-min-length": Object {
+          "description": "The header must consist of at least as many characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "header has value or more characters",
+          "type": "array",
+        },
+        "references-empty": Object {
+          "description": "When configured with 'never', the references must have at least one entry",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "references has at least one entry",
+          "type": "array",
+        },
+        "scope-case": Object {
+          "description": "The scope must be written in the configured case:
+'lower-case': default
+'upper-case': UPPERCASE
+'camel-case': camelCase
+'kebab-case': kebab-case
+'pascal-case': PascalCase
+'sentence-case': Sentence case
+'snake-case': snake_case
+'start-case': Start Case",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "enum": Array [
+                "lower-case",
+                "upper-case",
+                "camel-case",
+                "kebab-case",
+                "pascal-case",
+                "sentence-case",
+                "snake-case",
+                "start-case",
+              ],
+            },
+          ],
+          "title": "scope is in case value",
+          "type": "array",
+        },
+        "scope-empty": Object {
+          "description": "A scope value is not allowed, it must be empty",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "scope is empty",
+          "type": "array",
+        },
+        "scope-enum": Object {
+          "description": "The scope value in brackets after the type must be one of the specified values",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "items": Object {
+                "type": "string",
+              },
+              "type": "array",
+            },
+          ],
+          "title": "scope is found in value",
+          "type": "array",
+        },
+        "scope-max-length": Object {
+          "description": "The scope can consist of only up to the number of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "scope has value or less characters",
+          "type": "array",
+        },
+        "scope-min-length": Object {
+          "description": "The scope must consist of at least as many characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "scope has value or more characters",
+          "type": "array",
+        },
+        "signed-off-by": Object {
+          "description": "message must contain the configured value, e. g. 'Signed-off-by:'",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "string",
+            },
+          ],
+          "title": "message has value",
+          "type": "array",
+        },
+        "subject-case": Object {
+          "description": "The subject must be written in the configured case:
+'lower-case': default
+'upper-case': UPPERCASE
+'camel-case': camelCase
+'kebab-case': kebab-case
+'pascal-case': PascalCase
+'sentence-case': Sentence case
+'snake-case': snake_case
+'start-case': Start Case",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "enum": Array [
+                "lower-case",
+                "upper-case",
+                "camel-case",
+                "kebab-case",
+                "pascal-case",
+                "sentence-case",
+                "snake-case",
+                "start-case",
+              ],
+            },
+          ],
+          "title": "subject is in case value",
+          "type": "array",
+        },
+        "subject-empty": Object {
+          "description": "A subject is not allowed, it must be empty",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "subject is empty",
+          "type": "array",
+        },
+        "subject-full-stop": Object {
+          "description": "The subject must end with the configured value, e. g. '.'",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "string",
+            },
+          ],
+          "title": "subject ends with value",
+          "type": "array",
+        },
+        "subject-max-length": Object {
+          "description": "The subject can consist of only up to the number of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "subject has value or less characters",
+          "type": "array",
+        },
+        "subject-min-length": Object {
+          "description": "The subject must consist of at least as many characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "subject has value or more characters",
+          "type": "array",
+        },
+        "type-case": Object {
+          "description": "The type must be written in the configured case:
+'lower-case': default
+'upper-case': UPPERCASE
+'camel-case': camelCase
+'kebab-case': kebab-case
+'pascal-case': PascalCase
+'sentence-case': Sentence case
+'snake-case': snake_case
+'start-case': Start Case",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "enum": Array [
+                "lower-case",
+                "upper-case",
+                "camel-case",
+                "kebab-case",
+                "pascal-case",
+                "sentence-case",
+                "snake-case",
+                "start-case",
+              ],
+            },
+          ],
+          "title": "type is in case value",
+          "type": "array",
+        },
+        "type-empty": Object {
+          "description": "Type is not allowed, it must be empty",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+          ],
+          "title": "type is empty",
+          "type": "array",
+        },
+        "type-enum": Object {
+          "description": "The type value must be one of the specified values",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "items": Object {
+                "type": "string",
+              },
+              "type": "array",
+            },
+          ],
+          "title": "type is found in value",
+          "type": "array",
+        },
+        "type-max-length": Object {
+          "description": "The type can consist of only up to the number of characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "type has value or less characters",
+          "type": "array",
+        },
+        "type-min-length": Object {
+          "description": "The type must consist of at least as many characters as configured",
+          "items": Array [
+            Object {
+              "enum": Array [
+                0,
+                1,
+                2,
+              ],
+            },
+            Object {
+              "enum": Array [
+                "always",
+                "never",
+              ],
+            },
+            Object {
+              "type": "integer",
+            },
+          ],
+          "title": "type has value or more characters",
+          "type": "array",
+        },
+      },
+    },
+  },
+  "type": "object",
+}
+`;

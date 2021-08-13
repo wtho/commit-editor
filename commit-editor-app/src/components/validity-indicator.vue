@@ -139,9 +139,6 @@ export default defineComponent({
   margin-left: 0.5rem;
 }
 
-.warning-label {
-}
-
 .problem-button > span, .problem-label > span, .warning-label > span {
   margin-left: 0.5rem;
 }

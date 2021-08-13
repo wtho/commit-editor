@@ -8,7 +8,7 @@ export function parseUrlParams(): {
   if (!location.search) {
     return null
   }
-  const params = new URLSearchParams(window.location.search)
+  const params = new URLSearchParams(location.search)
   const paramMessage: string | undefined = params.get('message') ?? undefined
   const paramConfig: string | undefined = params.get('config') ?? undefined
   if (!paramMessage && !paramConfig) {

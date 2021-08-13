@@ -1,20 +1,15 @@
 export const debounce = (
-  func: (..._funcArgs: unknown[]) => unknown,
-  wait: number,
-  immediate?: boolean
+  debouncee: (..._debounceeArgs: unknown[]) => unknown,
+  waitForMsToTrigger: number,
 ) => {
-  let timeout: number | undefined | NodeJS.Timeout
+  let timeoutHandle: number | undefined | NodeJS.Timeout
   return function (this: unknown, ...args: unknown[]) {
-    const context = this
-    const later = () => {
-      timeout = undefined
-      if (!immediate) func.apply(context, args)
+    const thisContext = this
+    const delayedFunctionCall = () => {
+      timeoutHandle = undefined
+      debouncee.apply(thisContext, args)
     }
-    const callNow = immediate && timeout === undefined
-    clearTimeout(timeout as number)
-    timeout = setTimeout(later, wait)
-    if (callNow) {
-      func.apply(context, args)
-    }
+    clearTimeout(timeoutHandle as number | undefined)
+    timeoutHandle = setTimeout(delayedFunctionCall, waitForMsToTrigger)
   }
 }

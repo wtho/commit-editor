@@ -3,7 +3,8 @@ import parse from '@commitlint/parse'
 import type { Monaco, monaco } from './monaco'
 
 export type CommitRanges = {
-  [key in keyof Commit]: monaco.Range | null
+  // eslint-disable-next-line no-unused-vars
+  [_key in keyof Commit]: monaco.Range | null
 }
 
 export const parseCommit = async (
