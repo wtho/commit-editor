@@ -10,7 +10,7 @@ const ruleType = ({
   description,
   title,
   ...valueType
-}: ValueType & { description?: string; title?: string } = {}) => {
+}: ValueType & { description?: string; title?: string }) => {
   const defaultRuleTuple = [{ enum: [0, 1, 2] }, { enum: ['always', 'never'] }]
   const hasKeys = Object.keys(valueType).length > 0
   return {

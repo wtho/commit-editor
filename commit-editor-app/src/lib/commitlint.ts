@@ -129,8 +129,8 @@ export const validate = async ({
 
 const markerPositions: {
   [ruleStartsWith: string]: (
-    positionData: PositionData,
-    rules?: Partial<RulesConfig<RuleConfigQuality.Qualified>>
+    _positionData: PositionData,
+    _rules?: Partial<RulesConfig<RuleConfigQuality.Qualified>>
   ) => monaco.editor.IMarkerData
 } = {
   'header-max-length': ({ headerPosition, severity, message }, rules) => ({
@@ -161,7 +161,6 @@ const markerPositions: {
     message,
   }),
   'body-leading-blank': ({
-    bodyPosition,
     severity,
     message,
     commitMessage,
@@ -402,12 +401,12 @@ const getBodyPosition = (
     : undefined
   const bodyStartLine =
     bodyStartLineAccordingToParsed ?? bodyStartLineAccordingToLeadingBlankRule
-  const bodyLineCount = !!parsed.body
+  const bodyLineCount = parsed.body
     ? parsed.body?.split('\n').length - 1
     : Math.max(commitMessage?.split('\n').length, bodyStartLine + 1) -
       bodyStartLine -
       1
-  const endColumn = !!parsed.body
+  const endColumn = parsed.body
     ? parsed.body?.split('\n').slice(-1)[0].length + 1
     : commitMessage?.split('\n').slice(-1)[0].length + 1
   return {

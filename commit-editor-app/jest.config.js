@@ -2,7 +2,7 @@
 module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.vue$': 'vue-jest'
+    '^.+\\.vue$': 'vue-jest',
   },
   collectCoverageFrom: ['src/**/*.ts'],
 }
