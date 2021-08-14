@@ -5,7 +5,7 @@
     </div>
     <div class="action-panel__end">
       <semantic-versioning-indicator />
-      <monaco-style-tooltip v-if="webSocketOpen" >
+      <monaco-style-tooltip v-if="webSocketOpen" position="bottom" >
         <span class="sync-on">
           Close tab to commit
         </span>

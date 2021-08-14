@@ -1,7 +1,6 @@
 <template>
   <div class="tooltip-hover-element">
     <slot> </slot>
-
     <div class="tooltip-wrapper" :style="styles" :class="classes">
       <div class="tooltip">
         <p class="tooltip-paragraph">
