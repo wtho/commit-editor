@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/wtho/commit-editor/compare/v1.0.2...v1.0.3) (2021-08-14)
+
+
+### Bug Fixes
+
+* **webapp:** set semantic versioning indicator tooltip position to bottom ([1ee3c10](https://github.com/wtho/commit-editor/commit/1ee3c102e8c1577d723dc31f7174aada3f1af756))
+
 ## [1.0.2](https://github.com/wtho/commit-editor/compare/v1.0.1...v1.0.2) (2021-08-09)
 
 

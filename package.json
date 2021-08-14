@@ -1,6 +1,6 @@
 {
   "name": "commit-editor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "bin": "cli-build/bin/serve-commit-editor-prod.js",
   "author": {
