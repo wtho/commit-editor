@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/wtho/commit-editor/compare/v1.0.3...v1.1.0) (2021-11-29)
+
+
+### Features
+
+* add playground link on readme ([0999c7b](https://github.com/wtho/commit-editor/commit/0999c7bb01ae540f3378b2941e077f29ec980840))
+
 ## [1.0.3](https://github.com/wtho/commit-editor/compare/v1.0.2...v1.0.3) (2021-08-14)
 
 
