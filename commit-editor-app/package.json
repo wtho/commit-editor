@@ -29,12 +29,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@commitlint/config-angular": "^13.2.0",
-    "@commitlint/config-angular-type-enum": "^13.0.0",
-    "@commitlint/config-conventional": "^13.2.0",
-    "@commitlint/is-ignored": "^13.2.0",
-    "@commitlint/lint": "^13.2.0",
-    "@commitlint/rules": "^13.2.0",
+    "@commitlint/config-angular": "^15.0.0",
+    "@commitlint/config-angular-type-enum": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@commitlint/is-ignored": "^15.0.0",
+    "@commitlint/lint": "^15.0.0",
+    "@commitlint/rules": "^15.0.0",
     "conventional-changelog-conventionalcommits": "^4.6.0",
     "js-convert-case": "^4.1.2",
     "jsonc-parser": "^3.0.0",
