@@ -95,10 +95,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
-import {
-  commitEditorStoreSymbol,
-  CommitEditorStore,
-} from '../stores/commit-editor.store'
+import type { CommitEditorStore, } from '../stores/commit-editor.store'
+import { commitEditorStoreSymbol, } from '../stores/commit-editor.store'
 import MonacoStyleTooltip from './monaco-style-tooltip.vue'
 import Icon from './icon.vue'
 

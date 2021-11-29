@@ -20,10 +20,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
-import {
-  CommitEditorStore,
-  commitEditorStoreSymbol,
-} from '../stores/commit-editor.store'
+import type { CommitEditorStore, } from '../stores/commit-editor.store'
+import { commitEditorStoreSymbol, } from '../stores/commit-editor.store'
 import ValidityIndicator from '../components/validity-indicator.vue'
 import SemanticVersioningIndicator from '../components/semantic-versioning-indicator.vue'
 import CopyButton from '../components/copy-button.vue'

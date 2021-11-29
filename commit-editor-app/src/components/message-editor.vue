@@ -19,11 +19,10 @@ import {
 import { validate } from '../lib/commitlint'
 import { monaco } from '../lib/monaco'
 import { initMonacoLanguageConventionalCommits } from '../lib/conventional-commits-lang/monaco-language'
-import {
-  CommitEditorStore,
-  commitEditorStoreSymbol,
-} from '../stores/commit-editor.store'
-import { TabStore, tabStoreSymbol } from '../stores/tab.store'
+import type { CommitEditorStore, } from '../stores/commit-editor.store'
+import { commitEditorStoreSymbol, } from '../stores/commit-editor.store'
+import type { TabStore } from '../stores/tab.store'
+import { tabStoreSymbol } from '../stores/tab.store'
 import type { Config } from '../types'
 
 export default defineComponent({

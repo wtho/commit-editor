@@ -29,10 +29,8 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent, inject, ref } from 'vue'
-import {
-  CommitEditorStore,
-  commitEditorStoreSymbol,
-} from '../stores/commit-editor.store'
+import type { CommitEditorStore, } from '../stores/commit-editor.store'
+import { commitEditorStoreSymbol, } from '../stores/commit-editor.store'
 import Icon from '../components/icon.vue'
 
 export default defineComponent({

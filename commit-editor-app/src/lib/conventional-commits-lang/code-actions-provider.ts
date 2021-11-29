@@ -1,4 +1,5 @@
-import { Case, caseArray } from '../config-json-schema'
+import type { Case } from '../config-json-schema'
+import { caseArray } from '../config-json-schema'
 import type { RuleConfigQuality, RulesConfig } from '@commitlint/types'
 import type { Config } from '../../types'
 import type { monaco } from '../monaco'

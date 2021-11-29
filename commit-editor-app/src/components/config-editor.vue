@@ -15,11 +15,10 @@ import { monaco } from '../lib/monaco'
 import type { Monaco } from '../lib/monaco'
 import type { ParserOptions } from '@commitlint/types'
 import { parse as parseJson } from 'jsonc-parser'
-import {
-  CommitEditorStore,
-  commitEditorStoreSymbol,
-} from '../stores/commit-editor.store'
-import { TabStore, tabStoreSymbol } from '../stores/tab.store'
+import type { CommitEditorStore, } from '../stores/commit-editor.store'
+import { commitEditorStoreSymbol, } from '../stores/commit-editor.store'
+import type { TabStore } from '../stores/tab.store'
+import { tabStoreSymbol } from '../stores/tab.store'
 import type { Config } from '../types'
 import { extendableCommitlintConfigs } from '../lib/extendable-commitlint-configs'
 import { availableParserPresets } from '../lib/available-parser-presets'

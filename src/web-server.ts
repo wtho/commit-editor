@@ -2,6 +2,7 @@ import * as nodeStatic from 'node-static'
 import * as http from 'http'
 import * as path from 'path'
 import type * as WebSocket from 'ws'
+import type { Socket } from 'net'
 
 const noPort = 0
 
@@ -17,7 +18,7 @@ export async function initWebServer(
   const server = http.createServer((req, res) => staticServer.serve(req, res))
 
   server.on('upgrade', (request, socket, head) => {
-    webSocketServer.handleUpgrade(request, socket, head, (ws) =>
+    webSocketServer.handleUpgrade(request, socket as Socket, head, (ws) =>
       webSocketServer.emit('connection', ws, request)
     )
   })

@@ -54,7 +54,8 @@
 import { computed, defineComponent, inject, ref } from 'vue'
 import { monaco } from '../lib/monaco'
 import { isCommitMessageEmpty } from '../lib/message-empty-check'
-import { TabStore, tabStoreSymbol } from '../stores/tab.store'
+import type { TabStore } from '../stores/tab.store'
+import { tabStoreSymbol } from '../stores/tab.store'
 import Icon from './icon.vue'
 import MonacoStyleTooltip from './monaco-style-tooltip.vue'
 

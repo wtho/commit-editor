@@ -2,7 +2,8 @@
 module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.vue$': 'vue-jest',
+    '^.+\\.vue$': '@vue/vue3-jest',
   },
   collectCoverageFrom: ['src/**/*.ts'],
+  testEnvironment: 'jsdom'
 }

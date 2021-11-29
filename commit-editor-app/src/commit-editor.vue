@@ -20,10 +20,8 @@ import { defineComponent, inject } from 'vue'
 import EditorTab from './components/editor-tab.vue'
 import StatusBar from './components/status-bar.vue'
 import Icon from './components/icon.vue'
-import {
-  commitEditorStoreSymbol,
-  CommitEditorStore,
-} from './stores/commit-editor.store'
+import type { CommitEditorStore, } from './stores/commit-editor.store'
+import { commitEditorStoreSymbol, } from './stores/commit-editor.store'
 
 export default defineComponent({
   name: 'CommitEditor',

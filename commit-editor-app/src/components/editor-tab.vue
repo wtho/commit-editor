@@ -14,10 +14,8 @@ import MessageEditor from '../components/message-editor.vue'
 import ConfigEditor from '../components/config-editor.vue'
 import ActionPanel from '../components/action-panel.vue'
 import type { Config } from '../types'
-import {
-  CommitEditorStore,
-  commitEditorStoreSymbol,
-} from '../stores/commit-editor.store'
+import type { CommitEditorStore, } from '../stores/commit-editor.store'
+import { commitEditorStoreSymbol, } from '../stores/commit-editor.store'
 
 export default defineComponent({
   name: 'EditorTab',

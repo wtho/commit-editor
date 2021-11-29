@@ -36,7 +36,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, inject } from 'vue'
-import { TabStore, tabStoreSymbol } from '../stores/tab.store'
+import type { TabStore } from '../stores/tab.store'
+import { tabStoreSymbol } from '../stores/tab.store'
 import MonacoStyleTooltip from './monaco-style-tooltip.vue'
 import Icon from './icon.vue'
 

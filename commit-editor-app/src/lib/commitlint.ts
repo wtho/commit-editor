@@ -64,8 +64,9 @@ export const validate = async ({
     ])
     linted = lintOutcome
     parsed = parsedCommit
-  } catch (err) {
-    return { markers: [], semVerUpdate: messageSemVerUpdateStateNoUpdate, configErrors: [err?.message] }
+  } catch (err: unknown) {
+    const error = err as Error;
+    return { markers: [], semVerUpdate: messageSemVerUpdateStateNoUpdate, configErrors: [error?.message] }
   }
 
   const lineStartsWithBreakingChange = /^BREAKING[- ]CHANGE:/
