@@ -22,14 +22,13 @@ jobs:
 
       - name: deps and run tests
         run: |
-          lerna bootstrap
-          cd commit-editor-app
-          npm test -- --collectCoverage
+          npm install
+          npm test -w app -- --collectCoverage
 
       - name: prepare coverage report
         run: |
           mkdir coverage
-          cat commit-editor-app/coverage/lcov.info | sed 's/^SF:/SF:commit-editor-app\//g' > coverage/lcov.info
+          cat app/coverage/lcov.info | sed 's/^SF:/SF:app\//g' > coverage/lcov.info
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
@@ -52,14 +51,14 @@ jobs:
 
       - name: install and build
         run: |
-          lerna bootstrap
-          npm run build
+          npm install
+          npm run build -w cli
 
       - name: archive cli-app
         uses: actions/upload-artifact@v2
         with:
           name: cli-build
-          path: cli-build
+          path: cli/build
 
   build-webapp:
     runs-on: ubuntu-latest
@@ -77,16 +76,14 @@ jobs:
 
       - name: install and build
         run: |
-          lerna bootstrap
-          cd commit-editor-app
-          npm run build
+          npm install
+          npm run build -w app
 
       - name: archive web-app
         uses: actions/upload-artifact@v2
         with:
-          name: web-app-dist
-          path: web-app-dist
-
+          name: app-dist
+          path: app/dist
 
   e2e:
     runs-on: ubuntu-latest
@@ -105,14 +102,13 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: install
-        run: |
-          lerna bootstrap
+        run: npm install
 
       - name: download web app
         uses: actions/download-artifact@v2
         with:
-          name: web-app-dist
-          path: web-app-dist
+          name: app-dist
+          path: app/dist
 
       - name: run cypress e2e tests
         uses: cypress-io/github-action@v2
@@ -122,7 +118,6 @@ jobs:
           wait-on: 'http://localhost:5000'
           browser: chrome
           headless: true
-
 
   deploy:
     runs-on: ubuntu-latest
@@ -136,14 +131,14 @@ jobs:
       - name: download web app
         uses: actions/download-artifact@v2
         with:
-          name: web-app-dist
-          path: web-app-dist
+          name: app-dist
+          path: app/dist
 
       - name: deploy to netlify
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: npx netlify deploy --dir=web-app-dist --prod
+        run: npx netlify deploy --dir=app/dist --prod
 
 
   release:
@@ -160,12 +155,13 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: cli-build
+          path: cli/build
 
       - name: download web app
         uses: actions/download-artifact@v2
         with:
-          name: web-app-dist
-          path: web-app-dist
+          name: app-dist
+          path: app/dist
         
       - name: install semantic-release package
         run: npm i @semantic-release/changelog @semantic-release/git --no-save

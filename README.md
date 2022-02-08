@@ -1,4 +1,4 @@
-<h1 align="center"><img width="28" src="https://raw.githubusercontent.com/wtho/commit-editor/main/commit-editor-app/public/logo.svg" alt="Commit Editor Logo" /> Commit Editor</h1>
+<h1 align="center"><img width="28" src="https://raw.githubusercontent.com/wtho/commit-editor/main/app/public/logo.svg" alt="Commit Editor Logo" /> Commit Editor</h1>
 
 <p align="center">Interactive commitlint support to boost your conventional commits and semantic release productivity</p>
 

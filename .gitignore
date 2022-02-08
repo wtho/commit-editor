@@ -1,12 +1,9 @@
 node_modules
 .DS_Store
-dist
-dist-ssr
-web-app-dist
+dist/
+build/
 TODO.md
 *.local
-
-cli-build/
 
 coverage/
 

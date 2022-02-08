@@ -14,16 +14,15 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../web-app-dist',
     emptyOutDir: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          jsonWorker: [`monaco-editor/esm/vs/language/json/json.worker`],
-          editorWorker: [`monaco-editor/esm/vs/editor/editor.worker`],
-        },
-      },
-    },
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks: {
+    //       jsonWorker: [`monaco-editor/esm/vs/language/json/json.worker`],
+    //       editorWorker: [`monaco-editor/esm/vs/editor/editor.worker`],
+    //     },
+    //   },
+    // },
   },
   optimizeDeps: {
     include: ['@commitlint/parse', '@commitlint/lint'],

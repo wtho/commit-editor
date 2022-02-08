@@ -9,7 +9,7 @@ const noPort = 0
 export async function initWebServer(
   webSocketServer: WebSocket.Server
 ) {
-  const servePath = path.join(__dirname, '../web-app-dist')
+  const servePath = path.join(__dirname, './build')
   const staticServer = new nodeStatic.Server(servePath)
 
   let startsUp: () => void

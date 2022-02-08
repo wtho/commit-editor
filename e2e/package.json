@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "test": "cypress open",
-    "serve-web-app": "cd ../commit-editor-app && npm run serve"
+    "serve-web-app": "cd ../app && npm run serve"
   },
   "devDependencies": {
     "cypress": "^9.1.0",

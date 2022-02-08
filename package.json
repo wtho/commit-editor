@@ -1,0 +1,31 @@
+{
+  "name": "commit-editor",
+  "version": "1.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wtho/commit-editor.git"
+  },
+  "author": {
+    "email": "thomas@wtho.de",
+    "name": "Thomas Wirth",
+    "url": "https://github.com/wtho"
+  },
+  "homepage": "https://github.com/wtho/commit-editor",
+  "keywords": [
+    "commit-editor",
+    "conventional-commits",
+    "commitlint",
+    "semantic commit messages",
+    "semantic commits",
+    "semantic-release"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wtho/commit-editor/issues"
+  },
+  "workspaces": [
+    "app",
+    "cli",
+    "e2e"
+  ]
+}
