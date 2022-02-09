@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/wtho/commit-editor/compare/v1.1.0...v1.1.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* **app:** position version tooltip bottom ([26f4469](https://github.com/wtho/commit-editor/commit/26f446957e19c8b436d0307268aa928f4a0de893))
+
 # [1.1.0](https://github.com/wtho/commit-editor/compare/v1.0.3...v1.1.0) (2021-11-29)
 
 
