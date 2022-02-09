@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 
 export default defineComponent({
   name: 'MonacoStyleTooltip',
@@ -34,23 +34,28 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const styles = {
-      width: props.width,
+
+    const classes = computed(() => {
+      const classList: string[] = []
+      if (props.position === 'top') {
+        classList.push('tooltip-wrapper--top')
+      } else {
+        classList.push('tooltip-wrapper--bottom')
+      }
+      if (props.align === 'inline-start') {
+        classList.push('tooltip-wrapper--align-inline-start')
+      } else if (props.align === 'inline-end') {
+        classList.push('tooltip-wrapper--align-inline-end')
+      } else {
+        classList.push('tooltip-wrapper--align-inline-center')
+      }
+      return classList
+    })
+
+    return {
+      styles: computed(() => ({ width: props.width })),
+      classes,
     }
-    const classes: string[] = []
-    if (props.position === 'top') {
-      classes.push('tooltip-wrapper--top')
-    } else {
-      classes.push('tooltip-wrapper--bottom')
-    }
-    if (props.align === 'inline-start') {
-      classes.push('tooltip-wrapper--align-inline-start')
-    } else if (props.align === 'inline-end') {
-      classes.push('tooltip-wrapper--align-inline-end')
-    } else {
-      classes.push('tooltip-wrapper--align-inline-center')
-    }
-    return { styles, classes }
   },
 })
 </script>

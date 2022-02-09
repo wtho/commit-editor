@@ -1,5 +1,5 @@
 <template>
-  <monaco-style-tooltip width="200%">
+  <monaco-style-tooltip position="bottom" width="200%">
     <div class="semantic-version-indicator mono" :class="{ update: hasUpdate }">
       <template v-if="major">
         <icon icon="flash" :width="10" :height="16" color="#fe5196" alt="A flash icon indicating a version update" />.0.0
