@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@commitlint/config-angular": "^16.0.0",
-    "@commitlint/config-angular-type-enum": "^16.0.0",
+    "@commitlint/config-angular-type-enum": "^17.0.0",
     "@commitlint/config-conventional": "^16.0.0",
     "@commitlint/is-ignored": "^16.0.0",
     "@commitlint/lint": "^16.0.0",
